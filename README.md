@@ -50,3 +50,7 @@ Micro Python and IoT
     - Install Pillow package
 `pip install pillow`
     - Canvas
+# EP.9
+    - EP introduction
+    - Relay - 003300
+    - LED - 021100
