@@ -38,3 +38,9 @@ Micro Python and IoT
     - Server
     - Client - 013730
     - GUI - 020500
+# EP.7
+    - Sensor specification
+    - Concept - 003900
+    - DHT22 - 010000
+    - DHT22 value to server - 015130
+    - GUI - 021700
