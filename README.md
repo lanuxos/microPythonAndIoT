@@ -44,3 +44,9 @@ Micro Python and IoT
     - DHT22 - 010000
     - DHT22 value to server - 015130
     - GUI - 021700
+# EP.8
+    - EP introduction
+    - Dash board concept - 003830
+    - Install Pillow package
+`pip install pillow`
+    - Canvas
