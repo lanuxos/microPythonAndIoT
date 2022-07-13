@@ -31,3 +31,10 @@ Micro Python and IoT
     - Server - 021300
     - Client - 022200
     - urequests - 025230
+# EP.6
+    - EP introduction
+    - boot.py && main.py - 003300
+    - Standalone blinking LED - 004200
+    - Server
+    - Client - 013730
+    - GUI - 020500
