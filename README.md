@@ -22,3 +22,12 @@ Micro Python and IoT
     - [Driver_worked](https://www.wemos.cc/en/latest/ch340_driver.html)
     - Firmware installing through command line - 201000
     - LED - 022400
+# EP.5
+    - Review last EP.4 code
+    - Wi-fi concept - 002630
+    - [Manual](https://docs.micropython.org/en/latest/)
+    - Connect to wi-fi
+    - To convert mac address to hex
+    - Server - 021300
+    - Client - 022200
+    - urequests - 025230
