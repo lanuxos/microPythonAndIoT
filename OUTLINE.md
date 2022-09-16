@@ -73,4 +73,15 @@
 - ESP [server] - 012010
 - CSV log - 014015
 # EP.14
-- 
+- Concept - 002000
+- Installation - 004415
+# EP.15
+- Concept - 000720
+- Django initialization - 004303
+- settings.py
+- urls.py [Project URLS]
+- urls.py [App URLS]
+- models.py
+- admin.py
+- serializers.py
+- views.py
