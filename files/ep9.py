@@ -1,0 +1,76 @@
+from machine import Pin, SoftI2C
+from ssd1306 import SSD1306_I2C
+import time, dht
+
+relay = Pin(27, Pin.OUT, Pin.PULL_UP)
+relay.value(1)
+def relayOn():
+    relay.value(0)
+    print('Relay status: ON')
+def relayOff():
+    relay.value(1)
+    print('Relay status: OFF')
+def relayStatus():
+    if relay.value() == 0:
+        return "Relay is ON"
+    else:
+        return "Relay is OFF"
+
+d = dht.DHT22(Pin(23))
+def tempMeasure():
+    time.sleep(0.5)
+    d.measure()
+    temp = d.temperature()
+    humid = d.humidity()
+    displayTemp = '{:.1f} C'.format(temp)
+    displayHumid = '{:.1f} %'.format(humid)
+    return (temp, humid, displayTemp, displayHumid)
+    
+def Position(text):
+  if len(text) <= 16:
+    text = text
+    if len(text) == 16:
+      result = 0
+      return result
+    else:
+      start = (16 - len(text)) * 8
+      mod = start % 2
+      if mod == 0:
+        result = start // 2
+        return result
+      else:
+        result = (start // 2) + (mod / 2)
+        return result
+  else:
+    text = text[:16]
+    result = 0
+    return result
+
+WIDTH  = 128
+HEIGHT = 64
+softi2c = SoftI2C(scl=Pin(22), sda=Pin(21))
+oled = SSD1306_I2C(WIDTH, HEIGHT, softi2c)
+
+def display(dt, dh, r):
+    oled.fill(0)           
+    oled.text("MicroPython", Position("MicroPython"),0) 
+    oled.text("ESP32 Workshop", Position("ESP32 Workshop"), 8)
+    oled.text("Temperature:", Position("Temperature:"), 16)
+    oled.text(dt, Position(dt), 24)
+    oled.text('Humidity:', Position('Humidity:'), 32)
+    oled.text(dh, Position(dh), 40)
+    oled.text("Relay status:", Position("Relay status:"), 48)
+    oled.text(r, Position(r), 56)
+    time.sleep(0.5)
+    oled.show()
+    print('\nPrinted out')
+while True:
+    t, h, dt, dh = tempMeasure()
+    r = relayStatus()
+    if t > 27:
+        relayOn()
+        display(dt, dh, r)
+    else:
+        relayOff()
+        display(dt, dh, r)
+    time.sleep(1)

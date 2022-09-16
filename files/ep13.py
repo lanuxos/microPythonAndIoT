@@ -1,59 +1,3 @@
-# MicroPython and IoT
-# ep.13 - DHT22, threading
-
-# EP introduction
-# Concept - 000000
-# DHT22 - 000315
-```
-import dht
-
-d = dht.DHT22(Pin(23))
-t = 0
-h = 0
-def checkTemp():
-    print('Starting check temperature and humidity...')
-    global t
-    global h
-    while True:
-        try:
-            d.measure()
-            time.sleep_ms(2000) # milli-second
-            # time.sleep_us() # micro-second
-            t = d.temperature()
-            h = d.temperature()
-            print('DHT22[T/H]:', t, h)
-            time.sleep(5)
-        except:
-            pass
-```
-# PC request - 005315
-```
-import socket
-import threading
-import time
-
-serverIp = '192.168.43.62'
-port = 80
-
-def getTemp():
-    while True:
-        server = socket.socket()
-        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server.connect((serverIp, port))
-        server.send('PC|TEMP'.encode('utf-8'))
-        data = server.recv(1024).decode('utf-8')
-        server.close()
-        print(data)
-        stamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        t, h = data.split('_')
-        dt = [stamp, t,h]
-        writeCSV(dt)
-        time.sleep(10)
-
-getTemp()
-```
-# ESP [server] - 012010
-```
 # ep.12
 # socket, _thread
 from machine import Pin, SoftI2C
@@ -206,16 +150,23 @@ def runserver():
             except:
                 pass
 
+def loop_led():
+    global led_status
+    for i in range(100):
+        led.on()
+        led_status = 'ON'
+        oled.fill(0)
+        oled.text('LED: ON', 0, 0)
+        oled.text('Loop 10s', 0, 8)
+        oled.show()
+        time.sleep(10)
+        led.off()
+        led_status = 'OFF'
+        oled.fill(0)
+        oled.text('LED: OFF', 0, 0)
+        oled.text('Loop 10s', 0, 8)
+        oled.show()
+        time.sleep(10)
+
 _thread.start_new_thread(checkTemp, ())
 _thread.start_new_thread(runserver, ())
-```
-# CSV log - 014015
-```
-import csv
-from datetime import datetime
-
-def writeCSV(data):
-    with open('ep13TempLog.csv', 'a', newline='',encoding='utf-8') as file:
-        fw = csv.writer(file)
-        fw.writerow(data)
-```
