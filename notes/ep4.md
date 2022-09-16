@@ -7,12 +7,12 @@
 # [Driver_worked](https://www.wemos.cc/en/latest/ch340_driver.html)
 # Firmware installing through command line - 201000
 # LED - 022400
-    - Anode (+) connect to D5 [GPIO14/HSCLK]
-    - Cathode (-) connect to Ground
-    ```
-        from machine import Pin
-        import time
-        led = Pin(14, Pin.OUT)
-        led.on()
-        led.off()
-    ```
+- Anode (+) connect to D5 [GPIO14/HSCLK]
+- Cathode (-) connect to Ground
+```
+    from machine import Pin
+    import time
+    led = Pin(14, Pin.OUT)
+    led.on()
+    led.off()
+```

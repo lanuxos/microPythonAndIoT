@@ -6,13 +6,13 @@
 # [Manual](https://docs.micropython.org/en/latest/)
 # Connect to wi-fi
 ```
-    import network
-    net = network.WLAN(network.STA_IF) # network.WLAN(network.AP_IF) for access point mode
-    net.active(True)
-    net.scan()
-    net.connect("SSID", "PASSWORD")
-    net.isconnected()
-    net.ifconfig()
+import network
+net = network.WLAN(network.STA_IF) # network.WLAN(network.AP_IF) for access point mode
+net.active(True)
+net.scan()
+net.connect("SSID", "PASSWORD")
+net.isconnected()
+net.ifconfig()
 ```
 # To convert mac address to hex
 ```
