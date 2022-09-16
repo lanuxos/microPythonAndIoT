@@ -22,6 +22,15 @@ def RelayOff():
     print('LED: OFF')
 ```
 # LED - 021100
+- RELAY/BOARD INTERFACE
+    - DC+ <> 3.3V
+    - DC- <> GND
+    - IN1 <> GPIO
+- RELAY/LED INTERFACE
+    - COM1 <> GPIO
+    - NO1 <> LED+
+- LED INTERFACE
+    - LED- <> GND
 ```
 from machine import Pin
 relay = Pin(23, Pin.OUT)

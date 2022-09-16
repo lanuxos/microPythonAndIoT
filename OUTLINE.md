@@ -58,3 +58,11 @@
     - lcd_api
     - i2c_lcd
     - Example code
+# EP.11
+    - Concept - 000830
+    - Fritzing - 020505
+    - Coding - 022900
+# EP.12
+    - Concept - 000700
+    - Coding - 002500
+    - Threading - 023600
