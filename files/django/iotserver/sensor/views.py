@@ -5,9 +5,24 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 import json
 from .serializers import TempHumidSerializer
+from .models import *
 
 def Home(request):
-    return HttpResponse('Hello World, HttpResponse from django')
+    context = {}
+    return render(request, 'sensor/home.html', context)
+def SensorTable(request):
+    tempHumid = TempHumid.objects.all()
+    temp = []
+    humid = []
+    for t in tempHumid:
+        temp.append(t.temperature)
+        humid.append(t.humidity)
+    context = {'temp': temp, 'humid': humid, 'data': tempHumid}
+    return render(request, 'sensor/sensor.html', context)
+def About(request):
+    return render(request, 'sensor/about.html')
+def Login(request):
+    return render(request, 'sensor/login.html')
 
 @api_view(['POST'])
 def api_post_sensor(request):

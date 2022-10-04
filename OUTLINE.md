@@ -85,3 +85,10 @@
 - admin.py
 - serializers.py
 - views.py
+# EP.16
+- Concept - 000700
+- Digital Ocean Initialization - 004700
+- Screen - 024500
+# EP.17
+- Concept - 001800
+- Django Template - 002700
