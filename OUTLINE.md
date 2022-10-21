@@ -92,3 +92,18 @@
 # EP.17
 - Concept - 001800
 - Django Template - 002700
+# EP.18
+- Concept - 000645
+- Tools list - 001245
+- Initial project - 010600
+# EP.19
+- Concept - 001000
+- Coding - 001300
+    - textField - 002600
+    - switch - 003630
+    - button - 005700
+    - listView - 010000
+    - [dartpad.dev](dartpad.dev) - 013200
+    - button function - 013500
+    - if-else / conditional expression - 014230
+    - list - 015620
